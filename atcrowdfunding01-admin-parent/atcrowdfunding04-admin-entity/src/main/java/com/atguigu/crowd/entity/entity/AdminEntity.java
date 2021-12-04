@@ -15,6 +15,15 @@ public class AdminEntity {
 
     private Date create_time;
 
+    public AdminEntity(Integer id, String login_acct, String user_pswd, String user_name, String email, Date create_time) {
+        this.id = id;
+        this.login_acct = login_acct;
+        this.user_pswd = user_pswd;
+        this.user_name = user_name;
+        this.email = email;
+        this.create_time = create_time;
+    }
+
     public Integer getId() {
         return id;
     }
