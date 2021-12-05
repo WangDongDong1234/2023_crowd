@@ -1,7 +1,7 @@
 package com.atguigu.crowd.mapper;
 
 
-import com.atguigu.crowd.entity.entity.AdminEntity;
+import com.atguigu.crowd.entity.AdminEntity;
 
 public interface AdminMapper {
     int deleteByPrimaryKey(Integer id);

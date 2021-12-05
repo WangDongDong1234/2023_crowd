@@ -111,11 +111,6 @@
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>1.7.25</version>
             </dependency>
-            <dependency>
-                <groupId>org.slf4j</groupId>
-                <artifactId>jul-to-slf4j</artifactId>
-                <version>1.7.25</version>
-            </dependency>
 
             <!-- 9.Spring进行JSON数据转换依赖 -->
             <dependency>

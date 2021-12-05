@@ -1,9 +1,11 @@
 
 
-import com.atguigu.crowd.entity.entity.AdminEntity;
+import com.atguigu.crowd.entity.AdminEntity;
 import com.atguigu.crowd.mapper.AdminMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -47,6 +49,30 @@ public class CrowdTest {
 		// 即使上线前专门花时间删除代码中的sysout，也很可能有遗漏，而且非常麻烦。
 		// 而如果使用日志系统，那么通过日志级别就可以批量的控制信息的打印。
 		System.out.println("受影响的行数="+count);
+	}
+
+	@Test
+	public void testLog_3() {
+
+		// 1.获取Logger对象，这里传入的Class对象就是当前打印日志的类
+		Logger logger = LoggerFactory.getLogger(CrowdTest.class);
+
+		// 2.根据不同日志级别打印日志
+		logger.debug("Hello I am Debug level!!!");
+		logger.debug("Hello I am Debug level!!!");
+		logger.debug("Hello I am Debug level!!!");
+
+		logger.info("Info level!!!");
+		logger.info("Info level!!!");
+		logger.info("Info level!!!");
+
+		logger.warn("Warn level!!!");
+		logger.warn("Warn level!!!");
+		logger.warn("Warn level!!!");
+
+		logger.error("Error level!!!");
+		logger.error("Error level!!!");
+		logger.error("Error level!!!");
 	}
 
 }

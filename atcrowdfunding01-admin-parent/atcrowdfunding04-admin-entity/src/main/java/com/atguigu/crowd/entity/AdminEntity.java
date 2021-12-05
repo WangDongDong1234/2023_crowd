@@ -1,4 +1,4 @@
-package com.atguigu.crowd.entity.entity;
+package com.atguigu.crowd.entity;
 
 import java.util.Date;
 
