@@ -22,7 +22,7 @@ public class TestHandler {
 	 * @return
 	 */
 	@RequestMapping("/test/ssm.html")
-	public String testSsm(ModelMap modelMap) {
+	public String test1(ModelMap modelMap) {
 		
 		List<AdminEntity> adminList = adminService.getAll();
 		
