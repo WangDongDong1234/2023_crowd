@@ -3,6 +3,8 @@ package com.atguigu.crowd.mapper;
 
 import com.atguigu.crowd.entity.AdminEntity;
 
+import java.util.List;
+
 public interface AdminMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +17,6 @@ public interface AdminMapper {
     int updateByPrimaryKeySelective(AdminEntity record);
 
     int updateByPrimaryKey(AdminEntity record);
+
+    List<AdminEntity> selectAll();
 }

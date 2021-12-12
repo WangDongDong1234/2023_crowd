@@ -15,6 +15,10 @@ public class AdminEntity {
 
     private Date create_time;
 
+    public AdminEntity(){
+
+    }
+
     public AdminEntity(Integer id, String login_acct, String user_pswd, String user_name, String email, Date create_time) {
         this.id = id;
         this.login_acct = login_acct;
@@ -71,4 +75,11 @@ public class AdminEntity {
     public void setCreate_time(Date create_time) {
         this.create_time = create_time;
     }
+
+    @Override
+    public String toString() {
+        return "Admin [id=" + id + ", loginAcct=" + login_acct + ", userPswd=" + user_pswd + ", userName=" + user_name
+                + ", email=" + email + ", createTime=" + create_time + "]";
+    }
+
 }

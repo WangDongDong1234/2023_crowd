@@ -122,5 +122,19 @@
             <artifactId>jcl-over-slf4j</artifactId>
             <version>1.7.25</version>
         </dependency>
+
+        <!-- 12.引入Servlet容器中相关依赖 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- 13.JSP页面使用的依赖 -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
     </dependencies>
 </project>
