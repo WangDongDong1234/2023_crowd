@@ -10,4 +10,6 @@ public interface AdminService {
 
 	List<AdminEntity> getAll();
 
+	void saveAdminWithRandom(AdminEntity admin);
+
 }

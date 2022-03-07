@@ -2,6 +2,7 @@
 
 import com.atguigu.crowd.entity.AdminEntity;
 import com.atguigu.crowd.mapper.AdminMapper;
+import com.atguigu.crowd.service.api.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ import java.sql.SQLException;
 
 // 在类上标记必要的注解，Spring整合Junit
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml"})
+@ContextConfiguration(locations = {"classpath:spring-persist-mybatis.xml","classpath:spring-persist-tx.xml"})
 public class CrowdTest {
 	
 	@Autowired
@@ -25,6 +26,9 @@ public class CrowdTest {
 
 	@Autowired
 	private AdminMapper adminMapper;
+
+	@Autowired
+	private AdminService adminService;
 
 	/**
 	 * 测试数据库链接是否ok
@@ -74,5 +78,15 @@ public class CrowdTest {
 		logger.error("Error level!!!");
 		logger.error("Error level!!!");
 	}
+
+	/**
+	 *测试事务是否生效（随机数抛异常）
+	 */
+	@Test
+	public void testInsertAdmin_4() {
+		AdminEntity admin = new AdminEntity(null, "tom", "123123", "汤姆", "tom@qq.com", null);
+		adminService.saveAdminWithRandom(admin);
+	}
+
 
 }
