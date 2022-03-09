@@ -109,4 +109,15 @@ public class TestHandler {
 
 		return resultEntity;
 	}
+
+	@RequestMapping("/test/excepton.html")
+	public String test8(ModelMap modelMap) {
+
+		List<AdminEntity> adminList = adminService.getAll();
+
+		modelMap.addAttribute("adminList", adminList);
+		int age = 10/0;
+
+		return "target";
+	}
 }

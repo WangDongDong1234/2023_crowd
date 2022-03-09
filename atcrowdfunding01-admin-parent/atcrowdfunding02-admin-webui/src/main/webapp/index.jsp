@@ -194,5 +194,7 @@
 
 	<br/>
 	<button id="btn5">Send Compose  test7</button>
+	<br/>
+	<a href="test/excepton.html">测试基于xml的异常映射  test8</a>
 </body>
 </html>
