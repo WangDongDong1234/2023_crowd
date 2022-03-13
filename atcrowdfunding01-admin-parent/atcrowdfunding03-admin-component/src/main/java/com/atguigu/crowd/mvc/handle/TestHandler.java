@@ -120,4 +120,22 @@ public class TestHandler {
 
 		return "target";
 	}
+
+	@ResponseBody
+	@RequestMapping("/test/excepton2.json")
+	public ResultEntity<Student> test9(@RequestBody Student student, HttpServletRequest request) {
+
+		boolean judgeResult = CrowdUtil.judgeRequestType(request);
+
+		logger.info("judgeResult="+judgeResult);
+
+		logger.info(student.toString());
+
+		// 将“查询”到的Student对象封装到ResultEntity中返回
+		ResultEntity<Student> resultEntity = ResultEntity.successWithData(student);
+
+		int a=10/0;
+
+		return resultEntity;
+	}
 }

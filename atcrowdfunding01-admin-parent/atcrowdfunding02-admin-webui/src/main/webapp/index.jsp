@@ -11,6 +11,54 @@
 	<script type="text/javascript">
 
 		$(function(){
+			$("#btn6").click(function(){
+
+				// 准备要发送的数据
+				var student = {
+					"stuId": 5,
+					"stuName":"tom",
+					"address": {
+						"province": "广东",
+						"city": "深圳",
+						"street":"后瑞"
+					},
+					"subjectList": [
+						{
+							"subjectName": "JavaSE",
+							"subjectScore": 100
+						},{
+							"subjectName": "SSM",
+							"subjectScore": 99
+						}
+					],
+					"map": {
+						"k1":"v1",
+						"k2":"v2"
+					}
+				};
+
+				// 将JSON对象转换为JSON字符串
+				var requestBody = JSON.stringify(student);
+
+				// 发送Ajax请求
+				$.ajax({
+					"url":"test/excepton2.json",
+					"type":"post",
+					"data":requestBody,
+					"contentType":"application/json;charset=UTF-8",
+					"dataType":"json",
+					"success":function(response){
+						console.log(response);
+						alert(response);
+					},
+					"error":function(response){
+						console.log(response);
+						alert(response);
+					}
+				});
+
+			});
+
 			$("#btn5").click(function(){
 
 				// 准备要发送的数据
@@ -196,5 +244,8 @@
 	<button id="btn5">Send Compose  test7</button>
 	<br/>
 	<a href="test/excepton.html">测试基于xml的异常映射  test8</a>
+
+	<br/>
+	<button id="btn6">基于json和html的异常映射 test9</button>
 </body>
 </html>
