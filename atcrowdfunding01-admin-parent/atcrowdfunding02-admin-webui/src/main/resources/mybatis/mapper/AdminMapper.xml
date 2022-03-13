@@ -109,4 +109,11 @@
     <include refid="Base_Column_List" />
     from t_admin
   </select>
+
+  <select id="getAdminByLoginAcct" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_admin
+    where login_acct = #{loginAcct,jdbcType=VARCHAR}
+  </select>
 </mapper>

@@ -19,4 +19,6 @@ public interface AdminMapper {
     int updateByPrimaryKey(AdminEntity record);
 
     List<AdminEntity> selectAll();
+
+    List<AdminEntity> getAdminByLoginAcct(String loginAcct);
 }
