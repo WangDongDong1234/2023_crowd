@@ -8,9 +8,14 @@
 	<!-- http://localhost:8080/atcrowdfunding02_admin_webui_war/index.jsp -->
 	<base href="http://${pageContext.request.serverName }:${pageContext.request.serverPort }${pageContext.request.contextPath }/"/>
 	<script type="text/javascript" src="jquery/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript" src="layer/layer.js"></script>
 	<script type="text/javascript">
 
 		$(function(){
+			$("#btn7").click(function(){
+				//alert("aaa");
+				layer.msg("bb")
+			});
 			$("#btn6").click(function(){
 
 				// 准备要发送的数据
@@ -247,5 +252,8 @@
 
 	<br/>
 	<button id="btn6">基于json和html的异常映射 test9</button>
+
+	<br/>
+	<button id="btn7">引入layer的弹窗</button>
 </body>
 </html>
