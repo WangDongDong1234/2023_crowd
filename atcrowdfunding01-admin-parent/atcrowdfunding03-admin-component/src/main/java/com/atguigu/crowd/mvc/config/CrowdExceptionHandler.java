@@ -2,6 +2,7 @@ package com.atguigu.crowd.mvc.config;
 
 
 import com.google.gson.Gson;
+import constant.CrowdConstant;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -74,7 +75,7 @@ public class CrowdExceptionHandler {
         ModelAndView modelAndView = new ModelAndView();
 
         // 9.将Exception对象存入模型
-        modelAndView.addObject("exception", exception);
+        modelAndView.addObject(CrowdConstant.ATTR_NAME_EXCEPTION, exception);
 
         // 10.设置对应的视图名称
         modelAndView.setViewName(viewName);
