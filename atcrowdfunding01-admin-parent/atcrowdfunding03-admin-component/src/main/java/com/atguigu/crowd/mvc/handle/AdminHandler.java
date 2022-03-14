@@ -18,6 +18,15 @@ public class AdminHandler {
 	@Autowired
 	private AdminService adminService;
 
+	@RequestMapping("/admin/do/logout.html")
+	public String doLogout(HttpSession session) {
+
+		// 强制Session失效
+		session.invalidate();
+
+		return "redirect:/admin/to/login/page.html";
+	}
+
 	@RequestMapping("/admin/do/login.html")
 	public String doLogin(
 				@RequestParam("loginAcct") String loginAcct,
