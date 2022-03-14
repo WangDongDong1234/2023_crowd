@@ -32,7 +32,7 @@ public class AdminHandler {
 		// 将登录成功返回的AdminEntity对象存入Session域
 		session.setAttribute(CrowdConstant.ATTR_NAME_LOGIN_ADMIN, adminEntity);
 		
-		return "admin-main-temp";
+		return "redirect:/admin/to/main/page.html";
 	}
 
 }
