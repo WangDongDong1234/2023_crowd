@@ -21,4 +21,11 @@ public interface AdminMapper {
     List<AdminEntity> selectAll();
 
     List<AdminEntity> getAdminByLoginAcct(String loginAcct);
+
+    /**
+     * 存在索引问题，后面用elasticsearch
+     * @param keyword
+     * @return
+     */
+    List<AdminEntity> selectAdminByKeyword(String keyword);
 }

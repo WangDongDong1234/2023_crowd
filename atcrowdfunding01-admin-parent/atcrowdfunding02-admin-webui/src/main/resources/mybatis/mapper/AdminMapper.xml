@@ -116,4 +116,13 @@
     from t_admin
     where login_acct = #{loginAcct,jdbcType=VARCHAR}
   </select>
+
+  <select id="selectAdminByKeyword" resultMap="BaseResultMap">
+		select id, login_acct, user_pswd, user_name, email, create_time
+		from t_admin
+		where
+			login_acct like concat("%",#{keyword},"%") or
+			user_name like concat("%",#{keyword},"%") or
+			email like concat("%",#{keyword},"%")
+	</select>
 </mapper>

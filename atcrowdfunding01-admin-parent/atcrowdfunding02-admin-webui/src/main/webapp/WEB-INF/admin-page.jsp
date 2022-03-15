@@ -64,8 +64,8 @@
 											<tr>
 												<td>${myStatus.count }</td>
 												<td><input type="checkbox"></td>
-												<td>${admin.loginAcct }</td>
-												<td>${admin.userName }</td>
+												<td>${admin.login_acct }</td>
+												<td>${admin.user_name }</td>
 												<td>${admin.email }</td>
 												<td>
 													<button type="button" class="btn btn-success btn-xs">
