@@ -67,7 +67,7 @@ public class AdminHandler {
 		// 将PageInfo对象存入模型
 		modelMap.addAttribute(CrowdConstant.ATTR_NAME_PAGE_INFO, pageInfo);
 
-		return "admin-page";
+		return "admin/admin-page";
 	}
 
 	@RequestMapping("/admin/do/logout.html")
@@ -108,7 +108,7 @@ public class AdminHandler {
 		// 2.将Admin对象存入模型
 		modelMap.addAttribute("admin", admin);
 
-		return "admin-edit";
+		return "admin/admin-edit";
 	}
 
 	@RequestMapping("/admin/update.html")

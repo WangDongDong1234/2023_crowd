@@ -40,7 +40,7 @@ public class CrowdExceptionHandler {
             HttpServletResponse response
     ) throws IOException {
 
-        String viewName = "admin-add";
+        String viewName = "admin/admin-add";
 
         return commonResolve(viewName, exception, request, response);
     }
@@ -52,7 +52,7 @@ public class CrowdExceptionHandler {
             HttpServletResponse response
     ) throws IOException {
 
-        String viewName = "admin-login";
+        String viewName = "admin/admin-login";
 
         return commonResolve(viewName, exception, request, response);
     }
@@ -64,7 +64,7 @@ public class CrowdExceptionHandler {
             HttpServletResponse response
     ) throws IOException {
 
-        String viewName = "admin-login";
+        String viewName = "admin/admin-login";
 
         return commonResolve(viewName, exception, request, response);
     }
