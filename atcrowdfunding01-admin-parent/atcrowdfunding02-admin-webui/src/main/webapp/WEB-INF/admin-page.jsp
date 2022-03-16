@@ -67,15 +67,15 @@
 						</h3>
 					</div>
 					<div class="panel-body">
-						<form class="form-inline" role="form" style="float: left;">
+						<form action="admin/get/page.html" method="post" class="form-inline" role="form" style="float: left;">
 							<div class="form-group has-feedback">
 								<div class="input-group">
 									<div class="input-group-addon">查询条件</div>
-									<input class="form-control has-success" type="text"
+									<input name ="keyword" class="form-control has-success" type="text"
 										placeholder="请输入查询条件">
 								</div>
 							</div>
-							<button type="button" class="btn btn-warning">
+							<button type="submit" class="btn btn-warning">
 								<i class="glyphicon glyphicon-search"></i> 查询
 							</button>
 						</form>
