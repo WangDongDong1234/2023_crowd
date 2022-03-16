@@ -9,6 +9,7 @@ import com.atguigu.crowd.service.api.AdminService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import constant.CrowdConstant;
+import exception.LoginAcctAlreadyInUseException;
 import exception.LoginAcctAlreadyInUseForUpdateException;
 import exception.LoginFailedException;
 import org.slf4j.Logger;
@@ -18,6 +19,8 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import util.CrowdUtil;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,8 +34,29 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void saveAdmin(AdminEntity admin) {
-		
-		adminMapper.insert(admin);
+
+
+		// 1.密码加密
+		String userPswd = admin.getUser_pswd();
+		userPswd = CrowdUtil.md5(userPswd);
+		admin.setUser_pswd(userPswd);
+
+		// 2.生成创建时间
+		Date date = new Date();
+		admin.setCreate_time(date);
+
+		// 3.执行保存
+		try {
+			adminMapper.insert(admin);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			logger.info("异常全类名="+e.getClass().getName());
+
+			if(e instanceof DuplicateKeyException) {
+				throw new LoginAcctAlreadyInUseException(CrowdConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+			}
+		}
 	}
 
 	@Override

@@ -119,4 +119,13 @@ public class AdminHandler {
 		return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
 	}
 
+	@RequestMapping("/admin/save.html")
+	public String save(AdminEntity admin) {
+
+		adminService.saveAdmin(admin);
+
+		//使用Integer.MAX_VALUE 直接跳到最后一页
+		return "redirect:/admin/get/page.html?pageNum="+Integer.MAX_VALUE;
+	}
+
 }

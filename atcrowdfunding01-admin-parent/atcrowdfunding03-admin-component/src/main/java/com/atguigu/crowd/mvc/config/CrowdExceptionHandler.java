@@ -3,6 +3,10 @@ package com.atguigu.crowd.mvc.config;
 
 import com.google.gson.Gson;
 import constant.CrowdConstant;
+import exception.AccessForbiddenException;
+import exception.LoginAcctAlreadyInUseException;
+import exception.LoginAcctAlreadyInUseForUpdateException;
+import exception.LoginFailedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -16,6 +20,54 @@ import java.io.IOException;
 //基于注解的异常处理器
 @ControllerAdvice
 public class CrowdExceptionHandler {
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUseForUpdateException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseForUpdateException(
+            LoginAcctAlreadyInUseForUpdateException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "system-error";
+
+        return commonResolve(viewName, exception, request, response);
+    }
+
+    @ExceptionHandler(value = LoginAcctAlreadyInUseException.class)
+    public ModelAndView resolveLoginAcctAlreadyInUseException(
+            LoginAcctAlreadyInUseException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "admin-add";
+
+        return commonResolve(viewName, exception, request, response);
+    }
+
+    @ExceptionHandler(value = LoginFailedException.class)
+    public ModelAndView resolveLoginFailedException(
+            LoginFailedException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "admin-login";
+
+        return commonResolve(viewName, exception, request, response);
+    }
+
+    @ExceptionHandler(value = AccessForbiddenException.class)
+    public ModelAndView resolveAccessForbiddenException(
+            AccessForbiddenException exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "admin-login";
+
+        return commonResolve(viewName, exception, request, response);
+    }
 
     //@ExceptionHandler将一个具体的异常类型和一个方法关联起来
     @ExceptionHandler(value = NullPointerException.class)
