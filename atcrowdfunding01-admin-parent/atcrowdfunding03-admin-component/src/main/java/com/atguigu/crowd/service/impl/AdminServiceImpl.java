@@ -9,10 +9,12 @@ import com.atguigu.crowd.service.api.AdminService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import constant.CrowdConstant;
+import exception.LoginAcctAlreadyInUseForUpdateException;
 import exception.LoginFailedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 import util.CrowdUtil;
 
@@ -99,6 +101,33 @@ public class AdminServiceImpl implements AdminService {
 
 		// 3.封装到PageInfo对象中
 		return new PageInfo<>(list);
+	}
+
+	@Override
+	public void remove(Integer adminId) {
+		adminMapper.deleteByPrimaryKey(adminId);
+	}
+
+	@Override
+	public AdminEntity getAdminById(Integer adminId) {
+		return adminMapper.selectByPrimaryKey(adminId);
+	}
+
+	@Override
+	public void update(AdminEntity admin) {
+
+		// “Selective”表示有选择的更新，对于null值的字段不更新
+		try {
+			adminMapper.updateByPrimaryKeySelective(admin);
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			logger.info("异常全类名="+e.getClass().getName());
+
+			if(e instanceof DuplicateKeyException) {
+				throw new LoginAcctAlreadyInUseForUpdateException(CrowdConstant.MESSAGE_LOGIN_ACCT_ALREADY_IN_USE);
+			}
+		}
 	}
 
 
