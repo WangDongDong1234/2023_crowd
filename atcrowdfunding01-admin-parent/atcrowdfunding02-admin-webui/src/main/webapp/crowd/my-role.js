@@ -1,4 +1,4 @@
-// 声明专门的函数显示确认模态框
+// step6:声明专门的函数显示确认模态框
 function showConfirmModal(roleArray) {
 	
 	// 打开模态框
@@ -24,7 +24,7 @@ function showConfirmModal(roleArray) {
 	
 }
 
-// 执行分页，生成页面效果，任何时候调用这个函数都会重新加载页面
+// step1:执行分页，生成页面效果，任何时候调用这个函数都会重新加载页面
 function generatePage() {
 	
 	// 1.获取分页数据
@@ -35,19 +35,22 @@ function generatePage() {
 	
 }
 
-// 远程访问服务器端程序获取pageInfo数据
+// step2:远程访问服务器端程序获取pageInfo数据
 function getPageInfoRemote() {
 	
 	// 调用$.ajax()函数发送请求并接受$.ajax()函数的返回值
 	var ajaxResult = $.ajax({
 		"url": "role/get/page/info.json",
 		"type":"post",
+		// 发送的请求体非json数据
 		"data": {
 			"pageNum": window.pageNum,
 			"pageSize": window.pageSize,
 			"keyword": window.keyword
 		},
+		//关闭异步的原因是，填充数据可能在还没有收到返回对象的时候就完成了，这个时候就当空数据处理了
 		"async":false,
+		// 服务端返回的数据用json去解析
 		"dataType":"json"
 	});
 	
@@ -81,7 +84,7 @@ function getPageInfoRemote() {
 	return pageInfo;
 }
 
-// 填充表格
+// step3；填充表格
 function fillTableBody(pageInfo) {
 	
 	// 清除tbody中的旧的内容
@@ -129,7 +132,7 @@ function fillTableBody(pageInfo) {
 	generateNavigator(pageInfo);
 }
 
-// 生成分页页码导航条
+// step4:生成分页页码导航条
 function generateNavigator(pageInfo) {
 	
 	// 获取总记录数
@@ -150,7 +153,7 @@ function generateNavigator(pageInfo) {
 	$("#Pagination").pagination(totalRecord, properties);
 }
 
-// 翻页时的回调函数
+// step5:翻页时的回调函数
 function paginationCallBack(pageIndex, jQuery) {
 	
 	// 修改window对象的pageNum属性

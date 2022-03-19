@@ -53,6 +53,45 @@
 	}
 
 </script>
+<script type="text/javascript">
+
+	$(function(){
+
+		// 10.给总的checkbox绑定单击响应函数
+		$("#summaryBox").click(function(){
+			// ①获取当前多选框自身的状态
+			var currentStatus = this.checked;
+
+			// ②用当前多选框的状态设置其他多选框
+			$(".itemBox").prop("checked", currentStatus);
+
+		});
+
+
+		// 12.给批量删除的按钮绑定单击响应函数
+		$("#batchRemoveBtn").click(function(){
+
+			// 创建一个数组对象用来存放后面获取到的角色对象
+			var roleArray = [];
+
+			// 遍历当前选中的多选框
+			$(".itemBox:checked").each(function(){
+
+				// 使用this引用当前遍历得到的多选框
+				var roleId = this.id;
+				roleArray.push(roleId);
+			});
+
+			// 检查roleArray的长度是否为0
+			if(roleArray.length == 0) {
+				layer.msg("请至少选择一个执行删除");
+				return ;
+			}
+			console.log(roleArray)
+		});
+
+	});
+</script>
 <body>
 
 	<%@ include file="/WEB-INF/include-nav.jsp"%>
@@ -79,7 +118,7 @@
 								<i class="glyphicon glyphicon-search"></i> 查询
 							</button>
 						</form>
-						<button type="button" class="btn btn-danger"
+						<button id="batchRemoveBtn" type="button" class="btn btn-danger"
 							style="float: right; margin-left: 10px;">
 							<i class=" glyphicon glyphicon-remove"></i> 删除
 						</button>
@@ -94,7 +133,7 @@
 								<thead>
 									<tr>
 										<th width="30">#</th>
-										<th width="30"><input type="checkbox"></th>
+										<th width="30"><input id="summaryBox" type="checkbox"></th>
 										<th>账号</th>
 										<th>名称</th>
 										<th>邮箱地址</th>
@@ -111,7 +150,7 @@
 										<c:forEach items="${requestScope.pageInfo.list }" var="admin" varStatus="myStatus">
 											<tr>
 												<td>${myStatus.count }</td>
-												<td><input type="checkbox"></td>
+												<td><input id="${admin.id}" class ="itemBox" type="checkbox"></td>
 												<td>${admin.login_acct }</td>
 												<td>${admin.user_name }</td>
 												<td>${admin.email }</td>

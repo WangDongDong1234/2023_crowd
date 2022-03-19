@@ -210,13 +210,13 @@
 			
 		});
 		
-		// 10.给总的checkbox绑定单击响应函数
+		// 10.给总的checkbox绑定单击响应函数(全选，全不选)
 		$("#summaryBox").click(function(){
 			
 			// ①获取当前多选框自身的状态
 			var currentStatus = this.checked;
 			
-			// ②用当前多选框的状态设置其他多选框
+			// ②用当前多选框的状态设置其他多选框(通过设置class值，来统一更新)
 			$(".itemBox").prop("checked", currentStatus);
 			
 		});
