@@ -4,6 +4,7 @@ import com.atguigu.crowd.entity.MenuEntity;
 import com.atguigu.crowd.service.api.MenuService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import util.ResultEntity;
 
@@ -17,6 +18,35 @@ public class MenuHandler {
 
     @Resource
     private MenuService menuService;
+
+    @ResponseBody
+    @RequestMapping("/menu/remove.json")
+    public ResultEntity<String> removeMenu(@RequestParam("id") Integer id) {
+
+        menuService.removeMenu(id);
+
+        return ResultEntity.successWithoutData();
+    }
+
+    @ResponseBody
+    @RequestMapping("/menu/update.json")
+    public ResultEntity<String> updateMenu(MenuEntity menu) {
+
+        menuService.updateMenu(menu);
+
+        return ResultEntity.successWithoutData();
+    }
+
+    @ResponseBody
+    @RequestMapping("/menu/save.json")
+    public ResultEntity<String> saveMenu(MenuEntity menu) {
+
+        // Thread.sleep(2000);
+
+        menuService.saveMenu(menu);
+
+        return ResultEntity.successWithoutData();
+    }
 
     @ResponseBody
     @RequestMapping("/menu/get/whole/tree.json")

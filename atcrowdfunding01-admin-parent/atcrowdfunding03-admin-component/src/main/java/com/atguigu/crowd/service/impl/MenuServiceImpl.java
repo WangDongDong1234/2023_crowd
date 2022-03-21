@@ -22,4 +22,21 @@ public class MenuServiceImpl implements MenuService {
     public List<MenuEntity> getAll() {
         return menuMapper.getAll();
     }
+
+    @Override
+    public void saveMenu(MenuEntity menu) {
+        menuMapper.insert(menu);
+    }
+
+    @Override
+    public void updateMenu(MenuEntity menu) {
+
+        // 由于pid没有传入，一定要使用有选择的更新，保证“pid”字段不会被置空
+        menuMapper.updateByPrimaryKeySelective(menu);
+    }
+
+    @Override
+    public void removeMenu(Integer id) {
+        menuMapper.deleteByPrimaryKey(id);
+    }
 }
