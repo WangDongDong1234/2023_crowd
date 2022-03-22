@@ -2,6 +2,7 @@ package com.atguigu.crowd.mapper;
 
 
 import com.atguigu.crowd.entity.AdminEntity;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 

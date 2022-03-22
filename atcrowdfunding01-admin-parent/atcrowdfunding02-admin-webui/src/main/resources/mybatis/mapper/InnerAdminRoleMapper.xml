@@ -68,4 +68,24 @@
       role_id = #{role_id,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectAssignedRole" resultType="com.atguigu.crowd.entity.RoleEntity">
+    select id,name from t_role where id in (select role_id from inner_admin_role where
+    admin_id=#{adminId})
+  </select>
+
+  <select id="selectUnAssignedRole" resultType="com.atguigu.crowd.entity.RoleEntity">
+    select id,name from t_role where id not in (select role_id from inner_admin_role where
+    admin_id=#{adminId})
+  </select>
+
+  <delete id="deleteOLdRelationship">
+    delete from inner_admin_role where admin_id=#{adminId}
+  </delete>
+
+  <insert id="insertNewRelationship">
+    insert into inner_admin_role(admin_id,role_id) values
+    <foreach collection="roleIdList" item="roleId"
+             separator=",">(#{adminId},#{roleId})</foreach>
+  </insert>
 </mapper>

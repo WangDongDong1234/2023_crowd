@@ -4,7 +4,39 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <%@include file="/WEB-INF/include-head.jsp" %>
+<script type="text/javascript">
+	$(function (){
+		$("#toRightBtn").click(function(){
+			console.log("toRightBtn")
+			// select 是标签选择器
+			// :eq(0)表示选择页面上的第一个
+			// :eq(1)表示选择页面上的第二个
+			// “>”表示选择子元素
+			// :selected 表示选择“被选中的”option
+			// appendTo()能够将 jQuery 对象追加到指定的位置
+			$("select:eq(0)>option:selected").appendTo("select:eq(1)");
+		});
+		$("#toLeftBtn").click(function(){
+			console.log("toLeftBtn")
+			// select 是标签选择器
+			// :eq(0)表示选择页面上的第一个
+			// :eq(1)表示选择页面上的第二个
+			// “>”表示选择子元素
+			// :selected 表示选择“被选中的”option
+			// appendTo()能够将 jQuery 对象追加到指定的位置
+			$("select:eq(1)>option:selected").appendTo("select:eq(0)")
+		});
 
+		$("#submitBtn").click(function(){
+			// 在提交表单前把“已分配”部分的 option 全部选中
+			$("select:eq(1)>option").prop("selected","selected");
+			// 为了看到上面代码的效果，暂时不让表单提交
+			// return false;
+		});
+
+	})
+
+</script>
 <body>
 
 	<%@ include file="/WEB-INF/include-nav.jsp" %>
@@ -19,9 +51,13 @@
 				</ol>
 				<div class="panel panel-default">
 					<div class="panel-body">
-						<form role="form" class="form-inline">
+						<form action="assign/do/role/assign.html" method="post" role="form" class="form-inline">
+							<!--EL 表达式中的 param 也是一个隐含对象，可以用来获取请求参数！  -->
+							<input type="hidden" name="adminId" value="${param.adminId}">
+							<input type="hidden" name="pageNum" value="${param.pageNum}">
+							<input type="hidden" name="keyword" value="${param.keyword}">
 							<div class="form-group">
-								<label for="exampleInputPassword1">未分配角色列表</label><br>
+								<label >未分配角色列表</label><br>
 								<select class="form-control" multiple size="10" style="width:100px;overflow-y:auto;">
 									<c:forEach items="${requestScope.unAssignedRoleList }" var="role">
 										<option value="${role.id }">${role.name }</option>
@@ -30,19 +66,20 @@
 							</div>
 							<div class="form-group">
 								<ul>
-									<li class="btn btn-default glyphicon glyphicon-chevron-right"></li>
+									<li id="toRightBtn" class="btn btn-default glyphicon glyphicon-chevron-right"></li>
 									<br>
-									<li class="btn btn-default glyphicon glyphicon-chevron-left" style="margin-top:20px;"></li>
+									<li id="toLeftBtn" class="btn btn-default glyphicon glyphicon-chevron-left" style="margin-top:20px;"></li>
 								</ul>
 							</div>
 							<div class="form-group" style="margin-left:40px;">
-								<label for="exampleInputPassword1">已分配角色列表</label><br>
-								<select class="form-control" multiple size="10" style="width:100px;overflow-y:auto;">
+								<label >已分配角色列表</label><br>
+								<select name="roleIdList" class="form-control" multiple size="10" style="width:100px;overflow-y:auto;">
 									<c:forEach items="${requestScope.assignedRoleList }" var="role">
 										<option value="${role.id }">${role.name }</option>
 									</c:forEach>
 								</select>
 							</div>
+							<button id="submitBtn" type="submit" style="width: 100px;height: 50px;right: auto" class="btn btn-lg btn-success btn-block">保存</button>
 						</form>
 					</div>
 				</div>
