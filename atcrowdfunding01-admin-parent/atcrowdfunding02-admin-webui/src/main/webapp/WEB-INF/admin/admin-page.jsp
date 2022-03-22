@@ -155,9 +155,8 @@
 												<td>${admin.user_name }</td>
 												<td>${admin.email }</td>
 												<td>
-													<button type="button" class="btn btn-success btn-xs">
-														<i class=" glyphicon glyphicon-check"></i>
-													</button>
+													<!--EL 表达式中的 param 也是一个隐含对象，可以用来获取请求参数！  -->
+													<a href="assign/to/assign/role/page.html?adminId=${admin.id }&pageNum=${requestScope.pageInfo.pageNum }&keyword=${param.keyword }" class="btn btn-success btn-xs"><i class=" glyphicon glyphicon-check"></i></a>
 													<a href="admin/to/edit/page.html?adminId=${admin.id }&pageNum=${requestScope.pageInfo.pageNum }&keyword=${param.keyword }" class="btn btn-primary btn-xs"><i class=" glyphicon glyphicon-pencil"></i></a>
 													<a href="admin/remove/${admin.id }/${requestScope.pageInfo.pageNum }/${param.keyword }.html" class="btn btn-danger btn-xs"><i class=" glyphicon glyphicon-remove"></i></a>
 												</td>

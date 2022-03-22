@@ -45,4 +45,14 @@ public class RoleServiceImpl implements RoleService {
 		roleMapper.removeRole(roleIdList);
 	}
 
+	@Override
+	public List<RoleEntity> getAssignedRole(Integer adminId) {
+		return roleMapper.selectAssignedRole(adminId);
+	}
+
+	@Override
+	public List<RoleEntity> getUnAssignedRole(Integer adminId) {
+		return roleMapper.selectUnAssignedRole(adminId);
+	}
+
 }

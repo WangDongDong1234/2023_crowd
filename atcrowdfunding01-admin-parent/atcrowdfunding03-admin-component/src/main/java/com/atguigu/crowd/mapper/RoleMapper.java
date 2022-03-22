@@ -22,4 +22,8 @@ public interface RoleMapper {
     List<RoleEntity> selectRoleByKeyword(String keyword);
 
     void removeRole(@Param("roleIdList") List<Integer> roleIdList);
+
+    List<RoleEntity> selectAssignedRole(Integer adminId);
+
+    List<RoleEntity> selectUnAssignedRole(Integer adminId);
 }
