@@ -265,6 +265,14 @@
 			// 调用专门的函数打开模态框
 			showConfirmModal(roleArray);
 		});
+
+		// 13.给分配权限按钮绑定单机响应函数（从11 copy的，只事将itemBox改成中按钮中的class）
+		$("#rolePageBody").on("click",".checkBtn",function(){
+
+			// 打开模态框（由于跟新了js文件，要强制刷新才能更新js文件）
+			$("#assignModal").modal("show");
+
+		});
 	});
 </script>
 <body>
@@ -334,5 +342,6 @@
 	<%@include file="/WEB-INF/role/role-add.jsp" %>
 	<%@include file="/WEB-INF/role/role-edit.jsp" %>
 	<%@include file="/WEB-INF/role/role-confirm.jsp" %>
+	<%@include file="/WEB-INF/role/modal-role-assign-auth.jsp" %>
 </body>
 </html>
