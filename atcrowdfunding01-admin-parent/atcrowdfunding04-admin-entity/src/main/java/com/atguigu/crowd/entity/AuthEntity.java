@@ -8,10 +8,12 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class InnerAdminRoleEntity {
+public class AuthEntity {
     private Integer id;
 
-    private Integer admin_id;
+    private String name;
 
-    private Integer role_id;
+    private String title;
+
+    private Integer category_id;
 }
