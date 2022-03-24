@@ -1,5 +1,6 @@
 package com.atguigu.crowd.mvc.handle;
 
+import com.atguigu.crowd.entity.AuthEntity;
 import com.atguigu.crowd.entity.RoleEntity;
 import com.atguigu.crowd.service.api.AssignService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import util.ResultEntity;
 
 import java.util.List;
 
@@ -14,12 +17,11 @@ import java.util.List;
 public class AssignHandler {
 
     @Autowired
-   private AssignService assignService;
+    private AssignService assignService;
 
     @RequestMapping("/assign/to/assign/role/page.html")
     public String toAssignRolePage(
-            @RequestParam("adminId") Integer adminId, ModelMap modelMap
-    ) {
+            @RequestParam("adminId") Integer adminId, ModelMap modelMap) {
         // 1.查询已分配角色
         List<RoleEntity> assignedRoleList = assignService.getAssignedRole(adminId);
         // 2.查询未分配角色

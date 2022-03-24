@@ -5,6 +5,8 @@
 <%@include file="/WEB-INF/include-head.jsp"%>
 <link rel="stylesheet" href="css/pagination.css" />
 <script type="text/javascript" src="jquery/jquery.pagination.js"></script>
+<link rel="stylesheet" href="ztree/zTreeStyle.css"/>
+<script type="text/javascript" src="ztree/jquery.ztree.all-3.5.min.js"></script>
 <script type="text/javascript" src="crowd/my-role.js"></script>
 <script type="text/javascript">
 	
@@ -269,9 +271,65 @@
 		// 13.给分配权限按钮绑定单机响应函数（从11 copy的，只事将itemBox改成中按钮中的class）
 		$("#rolePageBody").on("click",".checkBtn",function(){
 
+			//把当前角色id存入全局变量(后面fillAuthTree，根据roleId获取该角色有那些权限)
+			window.roleId=this.id;
 			// 打开模态框（由于跟新了js文件，要强制刷新才能更新js文件）
 			$("#assignModal").modal("show");
 
+			// 在模态框中装载树Auth的形态结构数据
+			fillAuthTree();
+		});
+
+		// 14.给分配权限模态框中的分配按钮绑定响应时间
+		$("#assignBtn").click(function(){
+
+			//搜集树形结构中各个节点中被勾选额节点
+			// 1.申明一个专门的数组来存放id
+			var authIdArray=[];
+
+			// 2.获取ztreeobject对象
+			var zTreeObj = $.fn.zTree.getZTreeObj("authTreeDemo");
+
+			// 3.获取全部勾选对象
+			var checkedNodes =zTreeObj.getCheckedNodes()
+
+			// 4.遍历checkedNodes
+			for(var i=0;i<checkedNodes.length;i++){
+				var checkedNode=checkedNodes[i];
+				var authId = checkedNode.id;
+				authIdArray.push(authId);
+			}
+			console.log(authIdArray);
+
+			var requestBody={
+				"authIdArray":authIdArray,
+				"roleId":[window.roleId]
+			};
+
+			requestBody =JSON.stringify(requestBody);
+			$.ajax({
+				"url":"assign/do/role/assign/auth.json",
+				"type":"post",
+				"data":requestBody,
+				"contentType":"application/json;charset=UTF-8",
+				"dataType":"json",
+				"success":function(response){
+
+					var result = response.result;
+
+					if(result == "SUCCESS") {
+						layer.msg("操作成功！");
+					}
+
+					if(result == "FAILED") {
+						layer.msg("操作失败！"+response.message);
+					}
+
+				},
+				"error":function(response){
+					layer.msg(response.status+" "+response.statusText);
+				}
+			})
 		});
 	});
 </script>

@@ -3,6 +3,8 @@ package com.atguigu.crowd.mapper;
 
 import com.atguigu.crowd.entity.AuthEntity;
 
+import java.util.List;
+
 public interface AuthMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -15,4 +17,6 @@ public interface AuthMapper {
     int updateByPrimaryKeySelective(AuthEntity record);
 
     int updateByPrimaryKey(AuthEntity record);
+
+    List<AuthEntity> getAll();
 }

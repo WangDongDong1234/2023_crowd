@@ -1,3 +1,81 @@
+// 声明专门的函数用来分配Auth的模态框中显示Auth的树形结构数据
+function fillAuthTree() {
+	// 1.发送 Ajax 请求查询 Auth 数据
+	var ajaxReturn = $.ajax({
+		"url":"assgin/get/all/auth.json",
+		"type":"post",
+		"dataType":"json",
+		"async":false
+	});
+	if(ajaxReturn.status != 200) {
+		layer.msg(" 请 求 处 理 出 错 ！ 响 应 状 态 码 是 ： "+ajaxReturn.status+" 说 明 是 ："+ajaxReturn.statusText);
+		return ;
+	}
+	// 2.从响应结果中获取 Auth 的 JSON 数据
+	// 从服务器端查询到的 list 不需要组装成树形结构，这里我们交给 zTree 去组装
+	var authList = ajaxReturn.responseJSON.data;
+	// 3.准备对 zTree 进行设置的 JSON 对象
+	var setting = {
+		"data": {
+			"simpleData": {
+				// 开启简单 JSON 功能
+				"enable": true,
+				// 使用 categoryId 属性关联父节点，不用默认的 pId 了(刚开始用的categoryId看，展示出来的没有层次感，发现json数据返回的是category_id)
+				"pIdKey": "category_id"
+			},
+			"key": {
+				// 使用 title 属性显示节点名称，不用默认的 name 作为属性名了
+				"name": "title"
+			}
+		},
+		//true/false 分别表示显示/不显示复选框和单选框,  chkStyle是显示复选框还是单选框，默认是checkbox
+		"check": {
+			enable: true
+		}
+	};
+	// 4.生成树形结构
+	// <ul id="authTreeDemo" class="ztree"></ul>
+	$.fn.zTree.init($("#authTreeDemo"), setting, authList);
+	// 获取 zTreeObj 对象
+	var zTreeObj = $.fn.zTree.getZTreeObj("authTreeDemo");
+	// 调用 zTreeObj 对象的方法，把节点展开
+	zTreeObj.expandAll(true);
+	// 5.查询已分配的 Auth 的 id 组成的数组
+	ajaxReturn = $.ajax({
+		"url":"assign/get/assigned/auth/id/by/role/id.json",
+		"type":"post",
+		"data":{
+			"roleId":
+			//$("#rolePageBody").on("click",".checkBtn",function(){ 中设置了这个值
+			window.roleId
+		},
+		"dataType":"json",
+		"async":false
+	});
+	if(ajaxReturn.status != 200) {
+		layer.msg(" 请 求 处 理 出 错 ！ 响 应 状 态 码 是 ： "+ajaxReturn.status+" 说 明 是 ："+ajaxReturn.statusText);
+		return ;
+	}
+	// 从响应结果中获取 authIdArray
+	var authIdArray = ajaxReturn.responseJSON.data;
+	// 6.根据 authIdArray 把树形结构中对应的节点勾选上
+	// ①遍历 authIdArray
+	for(var i = 0; i < authIdArray.length; i++) {
+		var authId = authIdArray[i];
+		// ②根据 id 查询树形结构中对应的节点
+		var treeNode = zTreeObj.getNodeByParam("id", authId);
+		// ③将 treeNode 设置为被勾选
+		// checked 设置为 true 表示节点勾选
+		var checked = true;
+		// checkTypeFlag 设置为 false，表示不“联动”，不联动是为了避免把不该勾选的勾选上
+		var checkTypeFlag = false;
+		// 执行
+		zTreeObj.checkNode(treeNode, checked, checkTypeFlag);
+	}
+}
+
+
+
 // step6:声明专门的函数显示确认模态框
 function showConfirmModal(roleArray) {
 	
