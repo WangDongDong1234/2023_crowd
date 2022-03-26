@@ -49,6 +49,30 @@
       <version>2.1.3-b06</version>
       <scope>provided</scope>
     </dependency>
+
+
+    <!-- 加入 SpringSecurity 依赖 1-->
+    <!-- SpringSecurity 对 Web 应用进行权限管理 -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-web</artifactId>
+      <version>4.2.10.RELEASE</version>
+    </dependency>
+    <!-- 加入 SpringSecurity 依赖 2-->
+    <!-- SpringSecurity 配置 -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-config</artifactId>
+      <version>4.2.10.RELEASE</version>
+    </dependency>
+    <!-- 加入 SpringSecurity 依赖 3-->
+    <!-- SpringSecurity 标签库 -->
+    <dependency>
+      <groupId>org.springframework.security</groupId>
+      <artifactId>spring-security-taglibs</artifactId>
+      <version>4.2.10.RELEASE</version>
+    </dependency>
+
   </dependencies>
 
 <!--  <build>-->
