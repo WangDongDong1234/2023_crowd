@@ -9,6 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/atcrowdfunding04-admin-entity.iml" filepath="$PROJECT_DIR$/atcrowdfunding01-admin-parent/atcrowdfunding04-admin-entity/atcrowdfunding04-admin-entity.iml" />
       <module fileurl="file://$PROJECT_DIR$/atcrowdfunding05-admin-util/atcrowdfunding05-admin-util.iml" filepath="$PROJECT_DIR$/atcrowdfunding05-admin-util/atcrowdfunding05-admin-util.iml" />
       <module fileurl="file://$PROJECT_DIR$/atcrowdfunding06-admin-reverse/atcrowdfunding06-admin-reverse.iml" filepath="$PROJECT_DIR$/atcrowdfunding06-admin-reverse/atcrowdfunding06-admin-reverse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/atcrowdfunding07-security/atcrowdfunding07-security.iml" filepath="$PROJECT_DIR$/atcrowdfunding07-security/atcrowdfunding07-security.iml" />
     </modules>
   </component>
 </project>

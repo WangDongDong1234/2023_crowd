@@ -2,6 +2,7 @@
 <project version="4">
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/atcrowdfunding01-admin-parent/atcrowdfunding02-admin-webui" />
+    <file type="web" url="file://$PROJECT_DIR$/atcrowdfunding07-security" />
   </component>
   <component name="JavaScriptSettings">
     <option name="languageLevel" value="ES6" />
@@ -12,6 +13,7 @@
         <option value="$PROJECT_DIR$/atcrowdfunding01-admin-parent/pom.xml" />
         <option value="$PROJECT_DIR$/atcrowdfunding05-admin-util/pom.xml" />
         <option value="$PROJECT_DIR$/atcrowdfunding06-admin-reverse/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowdfunding07-security/pom.xml" />
       </list>
     </option>
   </component>
