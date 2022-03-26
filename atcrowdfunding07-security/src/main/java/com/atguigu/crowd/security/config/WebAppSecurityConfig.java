@@ -50,8 +50,8 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("userPswd") // 定制登录密码的请求参数名，要去前端页面检查，如用标签中设置的属性不正确，请求报302
                 .defaultSuccessUrl("/main.html") //设置登录成功后默认前往的 URL 地址
                 .and()
-                .csrf()
-                .disable()                       //禁用csrf功能
+//                .csrf()
+//                .disable()                       //禁用csrf功能
                 .logout()
                 .logoutUrl("/do/logout.html")    //指定推出界面
         ;

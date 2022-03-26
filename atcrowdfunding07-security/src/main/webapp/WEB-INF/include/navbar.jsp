@@ -33,24 +33,24 @@
 				</dd>
 			</dl></li>
 		<li class="layui-nav-item">
-			<a href="${pageContext.request.contextPath}/do/logout.html">退出</a>
-<%--			<form id="logoutForm" action="${pageContext.request.contextPath }/my/app/logout" method="post">--%>
-<%--				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
-<%--			</form>--%>
-<%--			<a id="logoutAnchor" href="">退出</a>--%>
-<%--			<script type="text/javascript">--%>
-<%--				window.onload = function() {--%>
+<%--			<a href="${pageContext.request.contextPath}/do/logout.html">退出</a>--%>
+			<form id="logoutForm" action="${pageContext.request.contextPath}/do/logout.html" method="post">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+			</form>
+			<a id="logoutAnchor" href="">退出</a>
+			<script type="text/javascript">
+				window.onload = function() {
+					<!-- 给超链接的DOM对象绑定单击响应函数-->
+					document.getElementById("logoutAnchor").onclick = function() {
+						<!-- 提交包含csrf的表单-->
+						document.getElementById("logoutForm").submit();
+						<!-- 取消超链接的默认行为-->
+						return false;
 
-<%--					document.getElementById("logoutAnchor").onclick = function() {--%>
+					};
 
-<%--						document.getElementById("logoutForm").submit();--%>
-
-<%--						return false;--%>
-
-<%--					};--%>
-
-<%--				};--%>
-<%--			</script>--%>
+				};
+			</script>
 		</li>
 	</ul>
 </div>
