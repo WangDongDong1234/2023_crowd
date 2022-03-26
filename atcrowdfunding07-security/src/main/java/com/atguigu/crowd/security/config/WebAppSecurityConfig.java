@@ -1,10 +1,17 @@
 package com.atguigu.crowd.security.config;
 
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.web.access.AccessDeniedHandler;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
@@ -14,11 +21,15 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
         //super.configure(auth); 一定要禁用默认规则
         builder.inMemoryAuthentication()
-                .withUser("tom").password("123123") //设置账号密码
-                .roles("ADMIN") //设置角色
+                .withUser("putong").password("putong") //设置账号密码
+                .roles("普通") //设置角色
                 .and()
-                .withUser("jerry").password("456456")//设置另一个账号密码
-                .authorities("SAVE","EDIT"); //设置权限
+                .withUser("gaoji").password("gaoji")//设置另一个账号密码
+                .authorities("高级") //设置权限
+                .and()
+                .withUser("jueshi").password("jueshi")
+                .roles("绝世")
+                ;
     }
 
     @Override
@@ -28,7 +39,13 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/index.jsp")		// 针对/index.jsp路径进行授权
                 .permitAll()					// 可以无条件访问
                 .antMatchers("/layui/**")		// 针对/layui目录下所有资源进行授权
-                .permitAll()					// 可以无条件访问
+                .permitAll()
+                .antMatchers("/level1/**")		// 针对/level1/**路径设置访问要求
+                .hasRole("普通")					// 要求用户具备“学徒”角色才可以访问
+                .antMatchers("/level2/**")		// 针对/level2/**路径设置访问要求
+                .hasAuthority("高级")
+                .antMatchers("/level3/**")		// 针对/level1/**路径设置访问要求
+                .hasRole("绝世")	// 可以无条件访问
                 .and()
                 .authorizeRequests()			// 对请求进行授权
                 .anyRequest()					// 任意请求
@@ -54,6 +71,19 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .disable()                       //禁用csrf功能
                 .logout()
                 .logoutUrl("/do/logout.html")    //指定推出界面
+                .and()
+                .exceptionHandling()                 //指定异常处理器
+//                .accessDeniedPage("/to/no/auth/page.html")  //访问被拒绝的处理页面（方式1）
+                .accessDeniedHandler(new AccessDeniedHandler() {  //访问被拒绝的处理页面（方式2）
+                    @Override
+                    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
+                        httpServletRequest.setAttribute("message", e.getMessage()+"####");
+                        httpServletRequest.getRequestDispatcher("/WEB-INF/views/no_auth.jsp").forward(httpServletRequest, httpServletResponse);
+
+                    }
+                })
         ;
     }
+
+
 }
