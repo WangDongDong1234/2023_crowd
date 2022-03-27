@@ -3,6 +3,7 @@ package com.atguigu.crowd.security.config;
 import com.atguigu.crowd.security.customize.MyPasswordEncoder;
 import com.atguigu.crowd.security.service.impl.AppUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -10,6 +11,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
@@ -32,6 +34,15 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyPasswordEncoder myPasswordEncoder;
 
+    /**
+     * bean是单实例的，每次调用前都会检查ioc容器中是否有，就就不会执行这个函数
+     * @return
+     */
+    @Bean
+    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
         //super.configure(auth); 一定要禁用默认规则
@@ -45,7 +56,10 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("jueshi").password("jueshi")
 //                .roles("绝世")
 //                ;
-        builder.userDetailsService(userDetailService).passwordEncoder(myPasswordEncoder);
+        //使用md5
+        //builder.userDetailsService(userDetailService).passwordEncoder(myPasswordEncoder);
+        //使用加盐
+        builder.userDetailsService(userDetailService).passwordEncoder(getBCryptPasswordEncoder());
     }
 
     @Override
