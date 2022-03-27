@@ -1,5 +1,6 @@
 package com.atguigu.crowd.security.config;
 
+import com.atguigu.crowd.security.customize.MyPasswordEncoder;
 import com.atguigu.crowd.security.service.impl.AppUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +29,9 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private UserDetailsService userDetailService;
 
+    @Autowired
+    private MyPasswordEncoder myPasswordEncoder;
+
     @Override
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
         //super.configure(auth); 一定要禁用默认规则
@@ -41,7 +45,7 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .withUser("jueshi").password("jueshi")
 //                .roles("绝世")
 //                ;
-        builder.userDetailsService(userDetailService);
+        builder.userDetailsService(userDetailService).passwordEncoder(myPasswordEncoder);
     }
 
     @Override
