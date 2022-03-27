@@ -1,5 +1,6 @@
 package com.atguigu.crowd.security.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -7,15 +8,20 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.sql.DataSource;
 import java.io.IOException;
 
 @Configuration
 @EnableWebSecurity
 public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    private DataSource dataSource;
 
     @Override
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
@@ -34,6 +40,8 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity security) throws Exception {
+        JdbcTokenRepositoryImpl repository = new JdbcTokenRepositoryImpl();
+        repository.setDataSource(dataSource);
         security
                 .authorizeRequests()			// 对请求进行授权
                 .antMatchers("/index.jsp")		// 针对/index.jsp路径进行授权
@@ -83,7 +91,7 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                     }
                 }).and()
                 .rememberMe()            //开启记住我功能，记住我的参数必须是remember-me，如果记住我的功能的name不是checkbox，则可以用rememberMeParameter()方法指定参数名
-
+                .tokenRepository(repository);
         ;
     }
 
