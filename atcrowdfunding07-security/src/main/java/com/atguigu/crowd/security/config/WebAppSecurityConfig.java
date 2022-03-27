@@ -1,5 +1,6 @@
 package com.atguigu.crowd.security.config;
 
+import com.atguigu.crowd.security.service.impl.AppUserDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.access.AccessDeniedException;
@@ -7,6 +8,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 
@@ -23,19 +25,23 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private DataSource dataSource;
 
+    @Autowired
+    private UserDetailsService userDetailService;
+
     @Override
     protected void configure(AuthenticationManagerBuilder builder) throws Exception {
         //super.configure(auth); 一定要禁用默认规则
-        builder.inMemoryAuthentication()
-                .withUser("putong").password("putong") //设置账号密码
-                .roles("普通") //设置角色
-                .and()
-                .withUser("gaoji").password("gaoji")//设置另一个账号密码
-                .authorities("高级") //设置权限
-                .and()
-                .withUser("jueshi").password("jueshi")
-                .roles("绝世")
-                ;
+//        builder.inMemoryAuthentication()
+//                .withUser("putong").password("putong") //设置账号密码
+//                .roles("普通") //设置角色
+//                .and()
+//                .withUser("gaoji").password("gaoji")//设置另一个账号密码
+//                .authorities("高级") //设置权限
+//                .and()
+//                .withUser("jueshi").password("jueshi")
+//                .roles("绝世")
+//                ;
+        builder.userDetailsService(userDetailService);
     }
 
     @Override
