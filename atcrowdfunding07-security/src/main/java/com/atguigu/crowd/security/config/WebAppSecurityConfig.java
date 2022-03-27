@@ -81,7 +81,9 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                         httpServletRequest.getRequestDispatcher("/WEB-INF/views/no_auth.jsp").forward(httpServletRequest, httpServletResponse);
 
                     }
-                })
+                }).and()
+                .rememberMe()            //开启记住我功能，记住我的参数必须是remember-me，如果记住我的功能的name不是checkbox，则可以用rememberMeParameter()方法指定参数名
+
         ;
     }
 
