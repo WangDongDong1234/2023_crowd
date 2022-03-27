@@ -20,6 +20,7 @@
         <atguigu.spring.version>4.3.20.RELEASE</atguigu.spring.version>
         <system.version>1.0-SNAPSHOT</system.version>
         <lombock.version>1.18.20</lombock.version>
+        <atguigu.srping.security.version>4.2.10.RELEASE</atguigu.srping.security.version>
     </properties>
 
     <dependencyManagement>
@@ -168,19 +169,19 @@
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-web</artifactId>
-                <version>4.2.10.RELEASE</version>
+                <version>${atguigu.srping.security.version}</version>
             </dependency>
             <!-- SpringSecurity 配置 -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-config</artifactId>
-                <version>4.2.10.RELEASE</version>
+                <version>${atguigu.srping.security.version}</version>
             </dependency>
             <!-- SpringSecurity 标签库 -->
             <dependency>
                 <groupId>org.springframework.security</groupId>
                 <artifactId>spring-security-taglibs</artifactId>
-                <version>4.2.10.RELEASE</version>
+                <version>${atguigu.srping.security.version}</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
