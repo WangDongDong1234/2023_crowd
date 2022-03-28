@@ -84,7 +84,7 @@ public class CrowdTest {
 	 */
 	@Test
 	public void testInsertAdmin_4() {
-		AdminEntity admin = new AdminEntity(null, "tom", "123123", "汤姆", "tom@qq.com", null);
+		AdminEntity admin = new AdminEntity(null, "wangdongdong", "123123", "汤姆", "tom@qq.com", null);
 		adminService.saveAdmin(admin);
 	}
 

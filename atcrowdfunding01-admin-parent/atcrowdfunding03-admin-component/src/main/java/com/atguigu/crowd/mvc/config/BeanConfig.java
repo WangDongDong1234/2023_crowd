@@ -8,8 +8,12 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @Configuration
 public class BeanConfig {
 
-    @Bean
-    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
-        return new BCryptPasswordEncoder();
-    }
+//    /**
+//     * 在这里声明，无法在XxxService中装配
+//     * @return
+//     */
+//    @Bean
+//    public BCryptPasswordEncoder getBCryptPasswordEncoder(){
+//        return new BCryptPasswordEncoder();
+//    }
 }
