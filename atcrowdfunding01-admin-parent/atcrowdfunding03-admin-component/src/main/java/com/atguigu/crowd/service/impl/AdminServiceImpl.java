@@ -33,8 +33,8 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminMapper adminMapper;
 
-	@Autowired
-	private BCryptPasswordEncoder bCryptPasswordEncoder;
+//	@Autowired
+//	private BCryptPasswordEncoder bCryptPasswordEncoder;
 
 	@Override
 	public void saveAdmin(AdminEntity admin) {
@@ -42,8 +42,8 @@ public class AdminServiceImpl implements AdminService {
 
 		// 1.密码加密
 		String userPswd = admin.getUser_pswd();
-		//userPswd = CrowdUtil.md5(userPswd);
-		userPswd = bCryptPasswordEncoder.encode(userPswd);
+		userPswd = CrowdUtil.md5(userPswd);
+		//userPswd = bCryptPasswordEncoder.encode(userPswd);
 		admin.setUser_pswd(userPswd);
 
 		// 2.生成创建时间
