@@ -16,6 +16,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import util.CrowdUtil;
 
@@ -32,13 +33,17 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminMapper adminMapper;
 
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+
 	@Override
 	public void saveAdmin(AdminEntity admin) {
 
 
 		// 1.密码加密
 		String userPswd = admin.getUser_pswd();
-		userPswd = CrowdUtil.md5(userPswd);
+		//userPswd = CrowdUtil.md5(userPswd);
+		userPswd = bCryptPasswordEncoder.encode(userPswd);
 		admin.setUser_pswd(userPswd);
 
 		// 2.生成创建时间
@@ -111,6 +116,17 @@ public class AdminServiceImpl implements AdminService {
 		}
 
 		// 8.如果一致则返回Admin对象
+		return admin;
+	}
+
+	@Override
+	public AdminEntity getAdminByLoginAcct(String username) {
+
+
+		List<AdminEntity> list = adminMapper.getAdminByLoginAcct(username);
+
+		AdminEntity admin = list.get(0);
+
 		return admin;
 	}
 

@@ -15,6 +15,8 @@ public interface AdminService {
 
 	AdminEntity getAdminByLoginAcct(String loginAcct, String userPswd);
 
+	AdminEntity getAdminByLoginAcct(String loginAcct);
+
 	PageInfo<AdminEntity> getPageInfo(String keyword, Integer pageNum, Integer pageSize);
 
 	void remove(Integer adminId);

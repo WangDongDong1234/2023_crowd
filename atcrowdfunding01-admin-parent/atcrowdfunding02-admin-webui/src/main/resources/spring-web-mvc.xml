@@ -65,4 +65,6 @@
 <!--			<bean class="com.atguigu.crowd.mvc.intercepter.LoginIntercepter"/>-->
 <!--		</mvc:interceptor>-->
 <!--	</mvc:interceptors>-->
+
+
 </beans>
