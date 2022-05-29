@@ -69,6 +69,18 @@ public class CrowdExceptionHandler {
         return commonResolve(viewName, exception, request, response);
     }
 
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView resolveException(
+            Exception exception,
+            HttpServletRequest request,
+            HttpServletResponse response
+    ) throws IOException {
+
+        String viewName = "admin/admin-login";
+
+        return commonResolve(viewName, exception, request, response);
+    }
+
     //@ExceptionHandler将一个具体的异常类型和一个方法关联起来
     @ExceptionHandler(value = NullPointerException.class)
     public ModelAndView resolveNullPointerException(

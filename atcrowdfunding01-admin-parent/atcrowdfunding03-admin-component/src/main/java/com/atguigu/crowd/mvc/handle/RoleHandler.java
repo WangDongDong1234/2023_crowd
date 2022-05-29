@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.atguigu.crowd.entity.RoleEntity;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,7 +48,15 @@ public class RoleHandler {
 		
 		return ResultEntity.successWithoutData();
 	}
-	
+
+	/**
+	 * 需要具备管理员(super)角色才能访问这个接口
+	 * @param pageNum
+	 * @param pageSize
+	 * @param keyword
+	 * @return
+	 */
+	@PreAuthorize("hasRole('管理员(super)')")
 	@ResponseBody
 	@RequestMapping("/role/get/page/info.json")
 	public ResultEntity<PageInfo<RoleEntity>> getPageInfo(

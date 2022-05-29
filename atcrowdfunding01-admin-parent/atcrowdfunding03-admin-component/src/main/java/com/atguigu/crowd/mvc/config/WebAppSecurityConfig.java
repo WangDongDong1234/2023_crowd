@@ -1,18 +1,30 @@
 package com.atguigu.crowd.mvc.config;
 
+import constant.CrowdConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 
 // 表示当前类是一个配置类
 @Configuration
 // 启用Web环境下权限控制功能
 @EnableWebSecurity
+//启用全局方法权限控制功能，并且设置 prePostEnabled = true。保证@PreAuthority、
+//@PostAuthority、@PreFilter、@PostFilter 生效
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -52,8 +64,20 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll() // 针对静态资源进行设置，无条件访问
                 .antMatchers("/ztree/**") // 针对静态资源进行设置，无条件访问
                 .permitAll()
+                .antMatchers("/admin/get/page.html")
+                .hasRole("普通用户(common)")
                 .anyRequest() // 其他任意请求
                 .authenticated() // 认证后访问
+                .and()
+                .exceptionHandling()
+                .accessDeniedHandler(new AccessDeniedHandler() {
+                    @Override
+                    public void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, AccessDeniedException e) throws IOException, ServletException {
+                        httpServletRequest.setAttribute("exception",new Exception(CrowdConstant.MESSAGE_ACCESS_DENIED));
+                        httpServletRequest.getRequestDispatcher("/WEB-INF/system-error.jsp").forward(httpServletRequest,httpServletResponse);
+
+                    }
+                })
                 .and()
                 .csrf() // 防跨站请求伪造功能
                 .disable() // 禁用
