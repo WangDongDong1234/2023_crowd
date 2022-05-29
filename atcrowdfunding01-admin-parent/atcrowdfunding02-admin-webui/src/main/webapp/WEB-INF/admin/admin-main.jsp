@@ -12,6 +12,16 @@
 			<%@ include file="/WEB-INF/include-sidebar.jsp" %>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				<h1 class="page-header">控制面板</h1>
+				Credentials：<security:authentication property="credentials"/><br/>
+				<p>显示出来才发现，principal原来是我们自己封装的SecurityAdmin对象</p>
+				<p>SpringSecurity处理完登录操作之后把登录成功的User对象以principal属性名存入了UsernamePasswordAuthenticationToken对象</p>
+				Principal：<security:authentication property="principal.class.name"/><br/>
+				Principal中的密码：<security:authentication property="principal.password"/><br/>
+				访问SecurityAdmin对象的属性：<security:authentication property="principal.originalAdmin.login_acct"/><br/>
+				访问SecurityAdmin对象的属性：<security:authentication property="principal.originalAdmin.user_pswd"/><br/>
+				访问SecurityAdmin对象的属性：<security:authentication property="principal.originalAdmin.user_name"/><br/>
+				访问SecurityAdmin对象的属性：<security:authentication property="principal.originalAdmin.email"/><br/>
+				访问SecurityAdmin对象的属性：<security:authentication property="principal.originalAdmin.create_time"/><br/>
 
 				<div class="row placeholders">
 					<div class="col-xs-6 col-sm-3 placeholder">

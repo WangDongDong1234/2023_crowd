@@ -19,7 +19,7 @@ public class SecurityAdmin extends User {
 	// 原始的Admin对象，包含Admin对象的全部属性
 	private AdminEntity originalAdmin;
 	
-	public SecurityAdmin(
+	public 	SecurityAdmin(
 			// 传入原始的Admin对象
 			AdminEntity originalAdmin,
 			
@@ -32,7 +32,7 @@ public class SecurityAdmin extends User {
 		// 给本类的this.originalAdmin赋值
 		this.originalAdmin = originalAdmin;
 
-		// 将原始 Admin 对象中的密码擦除
+		// 将原始 Admin 对象中的密码擦除(因为该密码已经上传给父类，所以这个不影响后面密码获取)
 		this.originalAdmin.setUser_pswd(null);
 		
 	}
