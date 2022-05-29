@@ -22,6 +22,7 @@ public class AdminHandler {
 	@Autowired
 	private AdminService adminService;
 
+	@PreAuthorize("hasAuthority('user:delete')")
 	@RequestMapping("/admin/remove/{adminId}/{pageNum}/{keyword}.html")
 	public String remove(
 			@PathVariable("adminId") Integer adminId,
@@ -112,6 +113,7 @@ public class AdminHandler {
 		return "admin/admin-edit";
 	}
 
+	@PreAuthorize("hasAuthority('user:update')")
 	@RequestMapping("/admin/update.html")
 	public String update(AdminEntity admin, @RequestParam("pageNum") Integer pageNum, @RequestParam("keyword") String keyword) {
 
@@ -120,6 +122,7 @@ public class AdminHandler {
 		return "redirect:/admin/get/page.html?pageNum="+pageNum+"&keyword="+keyword;
 	}
 
+	@PreAuthorize("hasAuthority('user:add')")
 	@RequestMapping("/admin/save.html")
 	public String save(AdminEntity admin) {
 

@@ -65,7 +65,8 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/ztree/**") // 针对静态资源进行设置，无条件访问
                 .permitAll()
                 .antMatchers("/admin/get/page.html")
-                .hasRole("普通用户(common)")
+//               .hasRole("普通用户(common)")
+                .access("hasRole('普通用户(common)')")
                 .anyRequest() // 其他任意请求
                 .authenticated() // 认证后访问
                 .and()
