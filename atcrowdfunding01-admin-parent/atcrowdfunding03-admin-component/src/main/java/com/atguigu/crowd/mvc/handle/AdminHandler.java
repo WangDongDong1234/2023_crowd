@@ -6,6 +6,7 @@ import com.atguigu.crowd.service.api.AdminService;
 import com.github.pagehelper.PageInfo;
 import constant.CrowdConstant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PostAuthorize;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -113,8 +114,10 @@ public class AdminHandler {
 		return "admin/admin-edit";
 	}
 
+
 	@PreAuthorize("hasAuthority('user:update')")
 	@RequestMapping("/admin/update.html")
+//	@PostAuthorize("returnObject.data.loginAcct == principal.username")
 	public String update(AdminEntity admin, @RequestParam("pageNum") Integer pageNum, @RequestParam("keyword") String keyword) {
 
 		adminService.update(admin);
