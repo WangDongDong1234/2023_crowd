@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 19/03/2022 16:58:37
+ Date: 29/05/2022 23:45:49
 */
 
 SET NAMES utf8mb4;
@@ -25,6 +25,13 @@ CREATE TABLE `t_role`  (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` char(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of t_role
+-- ----------------------------
+INSERT INTO `t_role` VALUES (7, '管理员(super)');
+INSERT INTO `t_role` VALUES (8, '普通用户(common)');
+INSERT INTO `t_role` VALUES (11, '未注册用户');
 
 SET FOREIGN_KEY_CHECKS = 1;
