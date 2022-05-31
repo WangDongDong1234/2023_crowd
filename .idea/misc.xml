@@ -14,6 +14,7 @@
         <option value="$PROJECT_DIR$/atcrowdfunding05-admin-util/pom.xml" />
         <option value="$PROJECT_DIR$/atcrowdfunding06-admin-reverse/pom.xml" />
         <option value="$PROJECT_DIR$/atcrowdfunding07-security/pom.xml" />
+        <option value="$PROJECT_DIR$/atcrowdfunding08-springboot/pom.xml" />
       </list>
     </option>
   </component>
