@@ -1,0 +1,20 @@
+student:
+  stu-id: 5
+  stu-name: jerry
+  graduated: false
+  subject:
+    - java
+    - php
+    - mysql
+  birthday: 1998/05/20
+  weddingDay: 2000-10-12 20:15:06
+  teachers:
+    java: tom
+    mysql: tony
+    web: bob
+  address:
+    province: 广东
+    city: 深圳
+    street: 宝安大道
+  startDate: 2010-05-20
+  endDateTime: 2015-10-12 20:15:20
