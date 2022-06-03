@@ -1,6 +1,8 @@
 package com.example.atcrowdfunding08springboot;
 
 import com.example.atcrowdfunding08springboot.config.Student;
+import com.example.atcrowdfunding08springboot.entity.AdminEntity;
+import com.example.atcrowdfunding08springboot.mapper.AdminMapper;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,6 +21,9 @@ class Atcrowdfunding08SpringbootApplicationTests {
     @Autowired
     private Student student;
 
+    @Autowired
+    private AdminMapper adminMapper;
+
     /**
      * 仅支持简单类型
      */
@@ -31,6 +36,12 @@ class Atcrowdfunding08SpringbootApplicationTests {
         logger.debug(student.toString());
         logger.debug("wishes:"+wishes);
 
+    }
+
+    @Test
+    public void testMybatis(){
+        AdminEntity adminEntity= adminMapper.selectByPrimaryKey(31);
+        logger.debug("adminEntity:"+adminEntity);
     }
 
 }

@@ -90,13 +90,12 @@
 <!--        MyBatis Generator会使用数据库中实际的字段名字作为生成的实体类的属性名。-->
 <!--        false-->
 <!--        这是默认值。如果设置为false,则MyBatis Generator会将数据库中实际的字段名字转换为Camel Case风格作为生成的实体类的属性名。-->
-        <table tableName="inner_role_auth"
-               domainObjectName="InnerRoleAuthEntity"
-               mapperName="InnerRoleAuthMapper"
+        <table tableName="t_admin"
+               domainObjectName="AdminEntity"
+               mapperName="AdminMapper"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
         </table>
 
     </context>
