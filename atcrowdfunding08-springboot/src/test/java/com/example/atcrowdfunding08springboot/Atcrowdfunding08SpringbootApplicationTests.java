@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
@@ -30,6 +31,9 @@ class Atcrowdfunding08SpringbootApplicationTests {
     @Value("${atguigu.best.wishes}")
     private String wishes;
 
+//    @Autowired
+//    private RedisTemplate<String,String > redisTemplate;
+
     @Test
     public void testReadYaml() {
 
@@ -44,4 +48,12 @@ class Atcrowdfunding08SpringbootApplicationTests {
         logger.debug("adminEntity:"+adminEntity);
     }
 
+    /**
+     * 该测试类需要把redis启动起来
+     */
+    @Test
+    public void testRedis(){
+//        redisTemplate.opsForValue().set("hello","world");
+//        System.out.println(redisTemplate.opsForValue().get("hello"));
+    }
 }
