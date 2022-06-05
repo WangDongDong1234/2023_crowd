@@ -7,11 +7,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="spring-cloud-study-common" />
         <module name="atcrowdfunding03-admin-component" />
         <module name="atcrowdfunding02-admin-webui" />
         <module name="atcrowdfunding08-springboot" />
         <module name="atcrowdfunding05-admin-util" />
         <module name="atcrowdfunding04-admin-entity" />
+        <module name="spring-cloud-study-consumer" />
+        <module name="spring-cloud-study-provider" />
         <module name="atcrowdfunding07-security" />
       </profile>
       <profile name="Annotation profile for atcrowdfunding06-admin-reverse" enabled="true">
@@ -45,6 +48,10 @@
       <module name="atcrowdfunding06-admin-reverse" target="1.8" />
       <module name="atcrowdfunding07-security" target="1.7" />
       <module name="atcrowdfunding08-springboot" target="1.8" />
+      <module name="spring-cloud-study-common" target="1.5" />
+      <module name="spring-cloud-study-consumer" target="1.5" />
+      <module name="spring-cloud-study-parent" target="1.5" />
+      <module name="spring-cloud-study-provider" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

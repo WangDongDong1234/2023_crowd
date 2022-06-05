@@ -11,6 +11,10 @@
       <module fileurl="file://$PROJECT_DIR$/atcrowdfunding06-admin-reverse/atcrowdfunding06-admin-reverse.iml" filepath="$PROJECT_DIR$/atcrowdfunding06-admin-reverse/atcrowdfunding06-admin-reverse.iml" />
       <module fileurl="file://$PROJECT_DIR$/atcrowdfunding07-security/atcrowdfunding07-security.iml" filepath="$PROJECT_DIR$/atcrowdfunding07-security/atcrowdfunding07-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/atcrowdfunding08-springboot/atcrowdfunding08-springboot.iml" filepath="$PROJECT_DIR$/atcrowdfunding08-springboot/atcrowdfunding08-springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-common/spring-cloud-study-common.iml" filepath="$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-common/spring-cloud-study-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-consumer/spring-cloud-study-consumer.iml" filepath="$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-consumer/spring-cloud-study-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-parent.iml" filepath="$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-provider/spring-cloud-study-provider.iml" filepath="$PROJECT_DIR$/spring-cloud-study-parent/spring-cloud-study-provider/spring-cloud-study-provider.iml" />
     </modules>
   </component>
 </project>
