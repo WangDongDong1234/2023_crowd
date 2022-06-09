@@ -7,7 +7,7 @@ eureka:
     service-url:    # 配置当前微服务作为Eureka客户端访问Eureka服务器端时使用的地址
       defaultZone: http://localhost:5000/eureka
 
-#指定服务停工这的名称，不然eureka中的服务会显示unknown
+#指定服务停工这的名称，不然eureka中的服务会显示unknown，以便将来通过微服务名称调用时能找到该服务
 spring:
   application:
     name: atguigu-provider

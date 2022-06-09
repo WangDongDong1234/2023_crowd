@@ -13,10 +13,20 @@ public class HelloHandler {
     @Autowired
     private RestTemplate restTemplate;
 
-    @GetMapping("/consumer/hello")
-    public Employee helloRemote(){
+    @GetMapping("/consumer/hello1")
+    public Employee helloRemote1(){
         //1.声明远程微服务的主机地址加端口号
         String host = "http://localhost:1000";
+
+        //2.声明具体的耳机口
+        String url = "/provider/hello";
+        return restTemplate.getForObject(host+url,Employee.class);
+    }
+
+    @GetMapping("/consumer/hello2")
+    public Employee helloRemote2(){
+        //1.声明远程微服务的主机地址加端口号
+        String host = "http://atguigu-provider";
 
         //2.声明具体的耳机口
         String url = "/provider/hello";
