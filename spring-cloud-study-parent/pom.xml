@@ -11,6 +11,7 @@
         <module>spring-cloud-study-common</module>
         <module>spring-cloud-study-provider</module>
         <module>spring-cloud-study-consumer</module>
+        <module>spring-cloud-study-eureka</module>
     </modules>
     <packaging>pom</packaging>
 
