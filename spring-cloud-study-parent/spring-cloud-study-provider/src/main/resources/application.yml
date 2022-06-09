@@ -1,2 +1,13 @@
 server:
   port: 1000
+
+#将provider注册到eureka中
+eureka:
+  client:
+    service-url:    # 配置当前微服务作为Eureka客户端访问Eureka服务器端时使用的地址
+      defaultZone: http://localhost:5000/eureka
+
+#指定服务停工这的名称，不然eureka中的服务会显示unknown
+spring:
+  application:
+    name: atguigu-provider
