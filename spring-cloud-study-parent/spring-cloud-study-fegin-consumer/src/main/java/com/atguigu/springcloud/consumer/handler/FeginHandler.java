@@ -4,7 +4,10 @@ import com.atguigu.springcloud.consumer.api.EmployeeRemoteService;
 import com.atugui.spring.cloud.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 public class FeginHandler {
@@ -17,4 +20,11 @@ public class FeginHandler {
     public Employee getEmployeeRemote() {
         return employeeRemoteService.helloFegin();
     }
+
+    @RequestMapping("/feign/consumer/search")
+    public List<Employee> getEmpListRemote(@RequestParam("keyword") String keyword) {
+
+        return employeeRemoteService.getEmpListRemote(keyword);
+    }
+
 }
