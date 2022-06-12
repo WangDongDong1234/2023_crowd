@@ -12,6 +12,7 @@
         <module>spring-cloud-study-provider</module>
         <module>spring-cloud-study-consumer</module>
         <module>spring-cloud-study-eureka</module>
+        <module>spring-cloud-study-fegin-consumer</module>
     </modules>
     <packaging>pom</packaging>
 

@@ -14,4 +14,11 @@ public class HelloHandler {
         int port = request.getServerPort();
         return new Employee(1,"王冬冬"+port,23.5);
     }
+
+    @GetMapping("/provider/helloFegin")
+    public Employee helloFegin(){
+        return new Employee(1,"汪如美",23.5);
+    }
+
+
 }
