@@ -16,7 +16,7 @@
         <!--mysql数据库连接-->
         <!--nullCatalogMeansCurrent=true这个参数是特地为解决catalog异常问题而配置的-->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://127.0.0.1:3306/project_crowd"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/project_crowd2"
                         userId="root"
                         password="123456">
         </jdbcConnection>
@@ -90,12 +90,14 @@
 <!--        MyBatis Generator会使用数据库中实际的字段名字作为生成的实体类的属性名。-->
 <!--        false-->
 <!--        这是默认值。如果设置为false,则MyBatis Generator会将数据库中实际的字段名字转换为Camel Case风格作为生成的实体类的属性名。-->
-        <table tableName="t_admin"
-               domainObjectName="AdminEntity"
-               mapperName="AdminMapper"
+        <table tableName="t_member"
+               domainObjectName="MemberPO"
+               mapperName="MemberMapper"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
+            <ignoreColumn column="gmt_create"/>
+            <ignoreColumn column="gmt_modified"/>
         </table>
 
     </context>
