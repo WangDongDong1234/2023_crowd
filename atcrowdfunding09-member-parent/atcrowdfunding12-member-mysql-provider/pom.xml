@@ -58,7 +58,15 @@
             <version>${project.version}</version>
         </dependency>
 
-
+        <!-- 对外暴露服务 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>aa.example</groupId>
+            <artifactId>atcrowdfunding05-admin-util</artifactId>
+        </dependency>
 
 
     </dependencies>

@@ -150,4 +150,11 @@
       acct_type = #{acctType,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByloginAcct" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_member
+    where login_acct = #{loginAcct,jdbcType=VARCHAR}
+  </select>
 </mapper>

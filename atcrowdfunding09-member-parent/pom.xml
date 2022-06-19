@@ -26,6 +26,7 @@
         <druid.version>1.0.5</druid.version>
         <mybatis.version>2.1.0</mybatis.version>
         <lombok.version> 1.18.8</lombok.version>
+        <myUtils.version>1.0-SNAPSHOT</myUtils.version>
     </properties>
 
     <dependencyManagement>
@@ -68,8 +69,28 @@
                 <version>${druid.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>aa.example</groupId>
+                <artifactId>atcrowdfunding05-admin-util</artifactId>
+                <version>${myUtils.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
+
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
