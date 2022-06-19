@@ -11,5 +11,45 @@
 
     <artifactId>atcrowdfunding13-member-redis-provider</artifactId>
 
+    <dependencies>
+        <!-- 整合Redis -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+
+        <!-- 测试 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 对外暴露服务 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- 作为客户端访问Eureka注册中心 -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+
+        <!-- 为了能够使用实体类 -->
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>atcrowdfunding11-member-entity</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- 为了能够使用工具类 -->
+        <dependency>
+            <groupId>aa.example</groupId>
+            <artifactId>atcrowdfunding05-admin-util</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>

@@ -47,10 +47,6 @@
             <groupId>org.example</groupId>
             <artifactId>atcrowdfunding11-member-entity</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>atcrowdfunding11-member-entity</artifactId>
-        </dependency>
 
         <dependency>
             <groupId>org.example</groupId>
