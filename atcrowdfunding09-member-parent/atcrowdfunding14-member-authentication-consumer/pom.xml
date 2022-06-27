@@ -12,6 +12,13 @@
     <artifactId>atcrowdfunding14-member-authentication-consumer</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
         <!-- 作为客户端访问Eureka注册中心 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
