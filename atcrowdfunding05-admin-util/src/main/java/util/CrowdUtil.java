@@ -10,8 +10,27 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class CrowdUtil {
+
+	private static Logger logger = LoggerFactory.getLogger(CrowdUtil.class);
+
+	public static ResultEntity<String> sendCodeByShortMessage(){
+		// 生成验证码
+		StringBuilder builder = new StringBuilder();
+		for(int i = 0; i < 4; i++) {
+			int random = (int) (Math.random() * 10);
+			builder.append(random);
+		}
+
+		String code = builder.toString();
+		logger.info("mock 一次短信发送");
+		// 操作成功，把生成的验证码返回
+		return ResultEntity.successWithData(code);
+	}
 	/**
 	 * 给远程第三方短信接口发送请求把验证码发送到用户手机上
 	 * @param host		短信接口调用的URL地址

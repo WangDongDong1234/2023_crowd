@@ -7,4 +7,5 @@ public interface MemberService {
 
 	MemberPO getMemberPOByLoginAcct(String loginAcct);
 
+    void saveMember(MemberPO memberPO);
 }

@@ -6,6 +6,7 @@ import com.atguigu.crowd.mapper.MemberMapper;
 import com.atguigu.crowd.po.MemberPO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -30,6 +31,16 @@ public class MemberServiceImpl implements MemberService {
 		}else{
 			return list.get(0);
 		}
+	}
+
+
+	@Transactional(
+			propagation = Propagation.REQUIRES_NEW,
+			rollbackFor = Exception.class,
+			readOnly = false)
+	@Override
+	public void saveMember(MemberPO memberPO) {
+		memberMapper.insertSelective(memberPO);
 	}
 
 }
