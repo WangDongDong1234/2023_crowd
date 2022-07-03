@@ -20,6 +20,31 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
+
+        <!-- 整合下面两个依赖，实现session共享 -->
+        <!-- 1.引入 springboot&redis 整合场景 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <!-- 2.引入 springboot&springsession 整合场景 -->
+        <dependency>
+            <groupId>org.springframework.session</groupId>
+            <artifactId>spring-session-data-redis</artifactId>
+        </dependency>
+
+
+        <dependency>
+            <groupId>aa.example</groupId>
+            <artifactId>atcrowdfunding05-admin-util</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.example</groupId>
+            <artifactId>atcrowdfunding11-member-entity</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
 

@@ -3,6 +3,10 @@ server:
 spring:
   application:
     name: atguigu-crowd-zuul
+  redis:
+    host: 127.0.0.1
+  session:
+    store-type: redis
 
 
 
@@ -13,8 +17,13 @@ eureka:
 
 zuul:
   ignored-services: "*"
-  sensitive-headers: "*"  # 在Zuul向其他微服务重定向时保持原本头信息（请求头、响应头）
+  sensitive-headers: "*"  # 在Zuul向其他微服务重定向时保持原本头信息（请求头、响应头,zuul的重定向时重新创建request，resposne,无法携带数据）
   routes:
     crowd-portal:
       service-id: atguigu-crowd-authentication
       path: /** # 这里一定要使用两个“*”号，不然“/”路径后面的多层路径将无法访问
+
+
+ribbon:
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
