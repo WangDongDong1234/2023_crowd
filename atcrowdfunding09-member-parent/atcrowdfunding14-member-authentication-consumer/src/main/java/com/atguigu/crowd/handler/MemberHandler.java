@@ -99,6 +99,8 @@ public class MemberHandler {
 
         //return "redirect:/auth/member/to/center/page";
 
+        // 如果启用了zuul，使用基于zuul的重定向，如果没有启用zuul则使用上面的。
+        // 因为http://localhost:80/ 和http://localhost:4000/ 是两个不同的网页，浏览器工作时不会使用相同的cookie
         return "redirect:http://localhost/auth/member/to/center/page";
     }
 
